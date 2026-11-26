@@ -498,6 +498,7 @@
       D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
       c.width=bg.width=W*D;c.height=bg.height=H*D;x.setTransform(D,0,0,D,0,0);bx.setTransform(D,0,0,D,0,0);
       bx.clearRect(0,0,W,H);bx.globalCompositeOperation='lighter';
+            var x0=-.1*W,y0=.82*H,x1=1.1*W,y1=.08*H,sp=Math.min(W,H),i,t,px,py,o,nx=(y1-y0),ny=-(x1-x0),nl=Math.hypot(nx,ny);nx/=nl;ny/=nl;
            for(i=0;i<9;i++){t=i/8;blob(bx,x0+(x1-x0)*t+N()*sp*.1,y0+(y1-y0)*t+N()*sp*.1,sp*R(.45,.8),i%3?'255,92,168':'255,182,217',R(.06,.1))}
       blob(bx,W*.15,H*.2,sp*.7,'214,51,132',.12);blob(bx,W*.9,H*.7,sp*.8,'255,92,168',.08);blob(bx,W*.55,H*.95,sp*.7,'168,24,95',.07);
       for(i=0;i<1400;i++){t=Math.random();o=N()*sp*.17;px=x0+(x1-x0)*t+nx*o;py=y0+(y1-y0)*t+ny*o;bx.fillStyle='rgba('+TN[(Math.random()*TN.length)|0]+','+R(.12,.5)*(1-Math.abs(o)/(sp*.2))+')';bx.beginPath();bx.arc(px,py,R(.25,.65),0,6.283);bx.fill()}
