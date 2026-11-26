@@ -525,7 +525,8 @@
     }
     build();addEventListener('resize',function(){build();if(still)frame(0)});still?frame(0):requestAnimationFrame(frame);
   })();
-
+</script>
+<script>
   (function(){
     var g=document.getElementById('gate'),b=document.getElementById('hold'),bio=document.getElementById('bio'),sbar=document.getElementById('sbar'),
         pr=b.querySelector('.prog'),bars=g.querySelectorAll('.bars i'),p=0,on=false,last=0,raf=0,DUR=1100;
