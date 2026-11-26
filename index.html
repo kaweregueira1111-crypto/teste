@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
+<meta name="theme-color" content="#8f2456">
+<title>NATHALIA DAYANE — VIP</title>
+<style>
+  :root{
+    --gold:#ffd23f;--amber:#ff8a1f;--lilac:#ffd6e7;--purple:#ff69b4;--purple-deep:#9e2a63;
+    --green:#19b552;--green-bright:#2ee872;
+    --ring:conic-gradient(from 210deg,#ffd23f,#fff0f5,#ffd6e7,#ff69b4,#ffd6e7,#ffd23f);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{
+    min-height:100%;background-color:#8f2456;
+    background: radial-gradient(90% 50% at 50% -8%,rgba(255,158,205,.65),transparent 72%),
+                radial-gradient(60% 40% at 100% 38%,rgba(255,105,180,.50),transparent 70%),
+                radial-gradient(70% 45% at 0% 78%,rgba(219,70,145,.50),transparent 70%),
+                linear-gradient(180deg,#b83b75 0%,#8f2456 55%,#69163d 100%);
+    background-attachment:fixed;
+  }
+  body{
+    min-height:100%;
+    font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    color:#fff;display:flex;justify-content:center;
+    padding:env(safe-area-inset-top) 0 calc(84px + env(safe-area-inset-bottom));
+    overflow-x:hidden;
+  }
+
+  /* PARTÍCULAS DE BRILHO NO FUNDO */
+  .sparkle-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .sparkle-dot{
+    position:absolute;bottom:-12px;border-radius:50%;
+    background:radial-gradient(circle,#fff 0%,#ffd6e7 55%,transparent 100%);
+    box-shadow:0 0 8px rgba(255,214,231,.8);
+    animation:floatSparkle linear infinite;
+  }
+  @keyframes floatSparkle{
+    0%{transform:translateY(0) scale(.6);opacity:0}
+    20%{opacity:.85}
+    80%{opacity:.6}
+    100%{transform:translateY(-105vh) scale(1.15);opacity:0}
+  }
+
+  .app{position:relative;z-index:1;width:100%;max-width:480px}
+
+  /* CAPA + PERFIL */
+  .cover{position:relative;width:100%;height:280px;overflow:hidden}
+  .cover img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+  .cover::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(143,36,86,0) 45%,rgba(143,36,86,.75) 82%,#8f2456 100%);
+  }
+  .profile{position:relative;margin-top:-54px;padding:0 16px;text-align:center}
+  .avatar-wrap{position:relative;width:104px;height:104px;margin:0 auto;border-radius:50%;padding:3px;background:var(--ring);box-shadow:0 0 24px rgba(255,105,180,.6)}
+  .avatar{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#69163d;display:grid;place-items:center;font-weight:900;font-size:28px;color:#ffd6e7}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+
+  .title{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;gap:6px;max-width:100%}
+  .title h1{
+    font-family:"Impact","Arial Black","Haettenschweiler",system-ui,sans-serif;
+    font-weight:900;font-style:italic;font-size:clamp(28px,8.5vw,40px);line-height:1;letter-spacing:-.5px;white-space:nowrap;
+    transform:skewX(-6deg);padding-right:8px;
+    background:linear-gradient(180deg,#fff 0%,#fff0f6 55%,#ffd6e7 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 0 rgba(90,15,50,.75)) drop-shadow(0 0 10px rgba(255,105,180,.45));
+  }
+  .verified{width:22px;height:22px;flex:none;filter:drop-shadow(0 0 6px rgba(255,105,180,.7))}
+  .handle{margin-top:4px;font-size:13px;font-weight:600;color:rgba(255,230,242,.88)}
+
+  /* CONTADOR ONLINE PULSANDO */
+  .live-pill{
+    margin:10px auto 0;display:inline-flex;align-items:center;gap:7px;
+    padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:700;
+    background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1px solid rgba(255,214,231,.35);color:#fff;
+  }
+  .live-dot{width:8px;height:8px;border-radius:50%;background:#2ee872;box-shadow:0 0 8px #2ee872;animation:pulseDot 1.4s infinite}
+  @keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.65}}
+
+  /* BOTÃO PRINCIPAL COM FEIXE DE LUZ */
+  .cta-wrap{padding:16px 16px 0}
+  .cta-main{
+    position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;padding:15px 18px;border-radius:16px;text-decoration:none;
+    font-weight:900;font-size:16px;letter-spacing:.4px;color:#fff;text-transform:uppercase;
+    background:linear-gradient(180deg,#ff69b4 0%,#d63384 100%);
+    border:1.5px solid rgba(255,214,231,.65);
+    box-shadow:0 8px 24px rgba(214,51,132,.45),inset 0 1px 0 rgba(255,255,255,.45);
+  }
+  .cta-main::after,.sticky-btn::after{
+    content:"";position:absolute;top:-50%;left:-60%;width:45%;height:200%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:rotate(25deg);animation:shineBeam 3.5s infinite;
+  }
+  @keyframes shineBeam{0%{left:-60%}35%,100%{left:140%}}
+
+  /* CAIXA RTP + CARDS TRANSPARENTES + ETIQUETAS */
+  .rtp-box{
+    margin:16px 16px 0;padding:14px;border-radius:16px;text-align:center;
+    background:rgba(143,36,86,.28);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1.5px solid rgba(255,182,217,.35);
+  }
+  .rtp-badge{
+    display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;
+    font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;
+    background:rgba(25,181,82,.22);border:1px solid rgba(46,232,114,.45);color:#9effc1;
+  }
+  .rtp-title{margin-top:6px;font-family:"Impact","Arial Black",sans-serif;font-size:20px;letter-spacing:.3px;color:#ffd23f}
+  .rtp-desc{margin-top:6px;font-size:12px;line-height:1.45;color:rgba(255,235,245,.92)}
+
+  .games-grid{margin-top:18px;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .game-card{
+    position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;color:#fff;
+    background:rgba(143,36,86,.25);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    border:1.5px solid rgba(255,182,217,.35);border-radius:14px;padding:7px;
+    box-shadow:0 6px 16px rgba(0,0,0,.35);transition:transform .18s ease,border-color .18s ease,background .18s ease;
+  }
+  .game-card:active{transform:scale(.96);border-color:#ffd6e7;background:rgba(255,105,180,.35)}
+  .game-tag{
+    position:absolute;top:11px;left:11px;z-index:2;padding:2px 6px;border-radius:6px;
+    font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;
+    background:rgba(20,5,14,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+    border:1px solid rgba(255,214,231,.45);color:#ffd23f;
+  }
+  .game-img{width:100%;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#b83b75,#69163d)}
+  .game-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .game-name{margin-top:6px;font-size:11px;font-weight:800;text-align:center;line-height:1.2;color:#fff}
+  .game-rtp{margin-top:3px;font-size:10px;font-weight:800;color:#2ee872}
+  /* BARRA FIXA INFERIOR TRANSPARENTE */
+  .sticky-bar{
+    position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:40;width:100%;max-width:480px;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    background:rgba(143,36,86,.35);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border-top:1.5px solid rgba(255,182,217,.38);box-shadow:0 -8px 24px rgba(0,0,0,.28);
+  }
+  .sticky-info{display:flex;align-items:center;gap:10px;min-width:0}
+  .sticky-logo{width:38px;height:38px;border-radius:10px;overflow:hidden;flex:none;background:#69163d;border:1px solid rgba(255,214,231,.4)}
+  .sticky-logo img{width:100%;height:100%;object-fit:cover}
+  .sticky-text{min-width:0}
+  .sticky-title{font-size:13px;font-weight:900;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sticky-sub{font-size:11px;font-weight:600;color:#ffd6e7}
+  .sticky-btn{
+    position:relative;overflow:hidden;flex:none;padding:10px 16px;border-radius:12px;
+    text-decoration:none;font-size:12.5px;font-weight:900;color:#fff;text-transform:uppercase;
+    background:linear-gradient(180deg,#ff69b4,#c71585);border:1px solid rgba(255,214,231,.55);
+    box-shadow:0 0 16px rgba(255,105,180,.65);white-space:nowrap;
+  }
+
+  /* TELA DE VERIFICAÇÃO RÁPIDA */
+  .gate{
+    position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:18px;
+    background:rgba(45,8,28,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    transition:opacity .45s ease,visibility .45s ease;
+  }
+  .gate.hidden{opacity:0;visibility:hidden;pointer-events:none}
+  .gcard{
+    width:100%;max-width:360px;padding:24px 18px;border-radius:22px;text-align:center;
+    background:rgba(143,36,86,.42);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+    border:1.5px solid rgba(255,182,217,.42);box-shadow:0 20px 45px rgba(0,0,0,.45);
+  }
+  .gbadge{
+    display:inline-block;padding:4px 10px;border-radius:999px;font-size:10.5px;font-weight:800;
+    letter-spacing:.6px;text-transform:uppercase;color:#ffd6e7;
+    background:rgba(255,105,180,.28);border:1px solid rgba(255,182,217,.4);
+  }
+  .gavatar{width:82px;height:82px;margin:14px auto 0;border-radius:50%;padding:3px;background:var(--ring);box-shadow:0 0 20px rgba(255,105,180,.55)}
+  .gavatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+  .gname{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;gap:5px;max-width:100%}
+  .gname b{
+    font-family:"Impact","Arial Black",sans-serif;font-weight:900;font-style:italic;
+    font-size:clamp(18px,5.5vw,24px);line-height:1;white-space:nowrap;display:inline-block;
+    transform:skewX(-6deg);padding-right:6px;
+    background:linear-gradient(180deg,#fff 0%,#ffd6e7 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .ghandle{margin-top:4px;font-size:12.5px;color:#ffd6e7;font-weight:600}
+  .gmsg{margin-top:14px;font-size:12.5px;line-height:1.4;color:rgba(255,240,246,.92)}
+  .hold-btn{
+    margin:18px auto 0;width:74px;height:74px;border-radius:50%;border:none;cursor:pointer;
+    display:grid;place-items:center;color:#fff;user-select:none;
+    background:linear-gradient(180deg,#ff69b4,#c71585);
+    box-shadow:0 0 24px rgba(255,105,180,.7),inset 0 1px 0 rgba(255,255,255,.5);
+  }
+  .hold-btn:active{transform:scale(.93)}
+  .hold-bar{margin:14px auto 0;width:75%;height:6px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+  .hold-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffd6e7,#ffd23f);transition:width .08s linear}
+
+  /* NOTIFICAÇÃO VIP TRANSPARENTE */
+  .spx-plus-toast{
+    position:fixed;top:14px;left:50%;z-index:85;width:calc(100% - 24px);max-width:420px;
+    display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;
+    background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+    border:1.5px solid rgba(255,255,255,.30);box-shadow:0 16px 36px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.35);
+    opacity:0;pointer-events:none;
+    transform:perspective(800px) translate3d(-50%,-150%,0) rotateX(24deg) scale(.86);
+    transition:all .55s cubic-bezier(.22,1,.36,1);
+  }
+  .spx-plus-toast.show{opacity:1;pointer-events:auto;transform:perspective(800px) translate3d(-50%,0,0) rotateX(0deg) scale(1)}
+  .spx-plus-badge{
+    width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:13px;
+    background:radial-gradient(circle at 30% 30%,rgba(255,215,0,.32),rgba(255,140,0,.1));
+    border:1px solid rgba(255,215,0,.42);box-shadow:0 0 18px rgba(255,190,40,.35);
+  }
+  .spx-plus-info{flex:1;min-width:0}
+  .spx-plus-title{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:900;color:#fff}
+  .spx-plus-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+  .spx-plus-tag{padding:2px 8px;border-radius:999px;font-size:10.5px;font-weight:700;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);color:#fff}
+  .spx-plus-close{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.14);color:#fff;font-size:12px;cursor:pointer;flex:none}
+</style>
+</head>
+<body>
+
+<div class="sparkle-bg" id="sparkleBg"></div>
+
+<!-- NOTIFICAÇÃO VIP -->
+<div class="spx-plus-toast" id="spxPlusToast" role="status" aria-live="polite">
+  <div class="spx-plus-badge" aria-hidden="true">
+    <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+      <polygon points="32,8 38.5,24.5 32,32" fill="#FFFBEB"/>
+      <polygon points="32,8 25.5,24.5 32,32" fill="#FDE047"/>
+      <polygon points="56,25.5 38.5,24.5 32,32" fill="#FACC15"/>
+      <polygon points="56,25.5 42.5,37 32,32" fill="#EAB308"/>
+      <polygon points="47,53 42.5,37 32,32" fill="#CA8A04"/>
+      <polygon points="47,53 32,43.5 32,32" fill="#F59E0B"/>
+      <polygon points="17,53 32,43.5 32,32" fill="#B45309"/>
+      <polygon points="17,53 21.5,37 32,32" fill="#D97706"/>
+      <polygon points="8,25.5 21.5,37 32,32" fill="#FACC15"/>
+      <polygon points="8,25.5 25.5,24.5 32,32" fill="#FEF08A"/>
+    </svg>
+  </div>
+  <div class="spx-plus-info">
+    <div class="spx-plus-title">Este é um cliente Plus! ⭐</div>
+    <div class="spx-plus-tags">
+      <span class="spx-plus-tag">Influenciadora Oficial</span>
+      <span class="spx-plus-tag">Pagamento Rápido</span>
+    </div>
+  </div>
+  <button class="spx-plus-close" id="spxPlusClose" aria-label="Fechar">✕</button>
+</div>
+
+<!-- TELA 1: VERIFICAÇÃO RÁPIDA -->
+<div class="gate" id="gate">
+  <div class="gcard">
+    <span class="gbadge">Verificação Rápida</span>
+    <div class="gavatar"><img src="COLAR_FOTO_PERFIL_AQUI" alt="Nathalia Dayane"></div>
+    <div class="gname">
+      <b>NATHALIA DAYANE</b>
+      <svg width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#ff69b4"/><path d="M9 12.2l2 2 4-4.2" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="ghandle">@nathaliadayanee_</div>
+    <p class="gmsg">Segure o botão abaixo por 1 segundo para liberar o acesso VIP.</p>
+    <button class="hold-btn" id="holdBtn" aria-label="Segure para entrar">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+    </button>
+    <div class="hold-bar"><div class="hold-fill" id="holdFill"></div></div>
+  </div>
+</div>
+
+<!-- TELA 2: CONTEÚDO PRINCIPAL -->
+<main class="app">
+  <div class="cover"><img src="COLAR_FOTO_CAPA_AQUI" alt="Capa"></div>
+
+  <section class="profile">
+    <div class="avatar-wrap">
+      <div class="avatar"><img src="COLAR_FOTO_PERFIL_AQUI" alt="Nathalia Dayane"></div>
+    </div>
+    <div class="title">
+      <h1>NATHALIA DAYANE</h1>
+      <svg class="verified" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#ff69b4"/><path d="M9 12.2l2 2 4-4.2" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="handle">@nathaliadayanee_</div>
+    <div>
+      <span class="live-pill"><span class="live-dot"></span> <span id="onlineCount">148</span> pessoas online agora</span>
+    </div>
+  </section>
+
+  <div class="cta-wrap">
+    <a class="cta-main" href="COLAR_LINK_PLATAFORMA_AQUI" target="_blank" rel="noopener">⚡ Jogar na Plataforma Oficial</a>
+  </div>
+
+  <section class="rtp-box">
+    <span class="rtp-badge">● Atualizado Agora</span>
+    <div class="rtp-title">HORÁRIOS PAGANTES</div>
+    <p class="rtp-desc">Confira abaixo os jogos com maior índice de retorno no momento. Valores atualizados automaticamente.</p>
+  </section>
+
+  <section class="games-grid" id="gamesGrid"></section>
+</main>
+
+<!-- BARRA FIXA INFERIOR -->
+<div class="sticky-bar">
+  <div class="sticky-info">
+    <div class="sticky-logo"><img src="COLAR_FOTO_LOGO_AQUI" alt="Logo"></div>
+    <div class="sticky-text">
+      <div class="sticky-title">Plataforma Oficial VIP</div>
+      <div class="sticky-sub">Depósito e saque via PIX</div>
+    </div>
+  </div>
+  <a class="sticky-btn" href="COLAR_LINK_PLATAFORMA_AQUI" target="_blank" rel="noopener">Jogar Agora</a>
+</div>
+
+<script>
+  // 1. Partículas de brilho
+  (function(){
+    var bg = document.getElementById('sparkleBg');
+    for(var i=0;i<22;i++){
+      var s = document.createElement('span');
+      s.className = 'sparkle-dot';
+      var size = (Math.random()*3 + 2).toFixed(1) + 'px';
+      s.style.width = size; s.style.height = size;
+      s.style.left = (Math.random()*100).toFixed(1) + '%';
+      s.style.animationDuration = (Math.random()*8 + 7).toFixed(1) + 's';
+      s.style.animationDelay = (Math.random()*6).toFixed(1) + 's';
+      bg.appendChild(s);
+    }
+  })();
+
+  // 2. Contador online dinâmico
+  setInterval(function(){
+    var el = document.getElementById('onlineCount');
+    if(!el) return;
+    var atual = parseInt(el.textContent, 10) || 148;
+    var delta = Math.floor(Math.random()*5) - 2;
+    el.textContent = Math.max(115, atual + delta);
+  }, 4000);
+
+  // 3. Lista de 9 Jogos (Sem links, apenas cards visuais)
+  var jogos = [
+    {nome:"Jogo 1", img:"COLAR_FOTO_JOGO_1", tag:"🔥 Hot"},
+    {nome:"Jogo 2", img:"COLAR_FOTO_JOGO_2", tag:"⚡ Top"},
+    {nome:"Jogo 3", img:"COLAR_FOTO_JOGO_3", tag:"🔥 Hot"},
+    {nome:"Jogo 4", img:"COLAR_FOTO_JOGO_4", tag:""},
+    {nome:"Jogo 5", img:"COLAR_FOTO_JOGO_5", tag:"⚡ 98%"},
+    {nome:"Jogo 6", img:"COLAR_FOTO_JOGO_6", tag:""},
+    {nome:"Jogo 7", img:"COLAR_FOTO_JOGO_7", tag:"🔥 Hot"},
+    {nome:"Jogo 8", img:"COLAR_FOTO_JOGO_8", tag:""},
+    {nome:"Jogo 9", img:"COLAR_FOTO_JOGO_9", tag:"⚡ Top"}
+  ];
+  var grid = document.getElementById('gamesGrid');
+  jogos.forEach(function(j){
+    var card = document.createElement('div');
+    card.className = 'game-card';
+    var rtp = Math.floor(Math.random()*7) + 92;
+    card.innerHTML =
+      (j.tag ? '<span class="game-tag">'+j.tag+'</span>' : '') +
+      '<div class="game-img"><img src="'+j.img+'" alt="'+j.nome+'"></div>' +
+      '<div class="game-name">'+j.nome+'</div>' +
+      '<div class="game-rtp">RTP '+rtp+'%</div>';
+    grid.appendChild(card);
+  });
+
+  // 4. Verificação Rápida + Notificação VIP depois da Tela 1
+  (function(){
+    var gate = document.getElementById('gate');
+    var btn = document.getElementById('holdBtn');
+    var fill = document.getElementById('holdFill');
+    var toast = document.getElementById('spxPlusToast');
+    var closeBtn = document.getElementById('spxPlusClose');
+    var prog = 0, timer = null, liberado = false;
+
+    function abrirSite(){
+      if(liberado) return;
+      liberado = true;
+      gate.classList.add('hidden');
+      setTimeout(function(){
+        toast.classList.add('show');
+        setTimeout(function(){ toast.classList.remove('show'); }, 5000);
+      }, 450);
+    }
+
+    function iniciar(){
+      if(liberado) return;
+      timer = setInterval(function(){
+        prog += 5;
+        fill.style.width = prog + '%';
+        if(prog >= 100){ clearInterval(timer); abrirSite(); }
+      }, 40);
+    }
+    function cancelar(){
+      if(liberado) return;
+      clearInterval(timer);
+      prog = 0; fill.style.width = '0%';
+    }
+
+    btn.addEventListener('mousedown', iniciar);
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); iniciar(); });
+    window.addEventListener('mouseup', cancelar);
+    window.addEventListener('touchend', cancelar);
+    if(closeBtn) closeBtn.onclick = function(){ toast.classList.remove('show'); };
+  })();
+</script>
+</body>
+</html>
